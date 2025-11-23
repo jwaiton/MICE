@@ -10,5 +10,11 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
 
 cmake_minimum_required(VERSION 3.10)
 project(MICE)
+
+find_package(HDF5 REQUIRED)
+
 add_executable(MICE src/main.c)
 
+
+target_include_directories(MICE PRIVATE ${HDF5_INCLUDE_DIRS})
+target_link_libraries(MICE PRIVATE ${HDF5_LIBRARIES})
